@@ -15,4 +15,4 @@ RUN chmod +x /bin/consul
 VOLUME ["/consul-data"]
 EXPOSE 8300 8301 8302 8400 8500 53/udp
 
-ONBUILD ./config /config
+ONBUILD ADD ./config /config
