@@ -5,7 +5,7 @@ MAINTAINER omeid@microcloud.io
 RUN yum -y install http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
 # Update the system.
 RUN yum -y upgrade
-RUN yum -y install unzip
+RUN yum -y install unzip nc
 
 ## Get Consul
 ADD https://dl.bintray.com/mitchellh/consul/0.3.0_linux_amd64.zip /tmp/consul.zip
