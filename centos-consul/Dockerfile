@@ -1,4 +1,4 @@
-FROM centos
+FROM centos:6.4
 MAINTAINER omeid@microcloud.io
 
 # Enable EPEL
@@ -7,8 +7,7 @@ RUN yum -y install http://download.fedoraproject.org/pub/epel/6/i386/epel-releas
 RUN yum -y upgrade
 RUN yum -y install unzip nc
 
-## Get Consul
+# Get Consul
 ADD https://dl.bintray.com/mitchellh/consul/0.3.0_linux_amd64.zip /tmp/consul.zip
 RUN unzip /tmp/consul.zip consul -d /bin/
 RUN chmod +x /bin/consul
-VOLUME ["/consul-data"]
