@@ -1,4 +1,4 @@
-FROM centos:6.4
+FROM centos:7
 MAINTAINER omeid@microcloud.io
 
 # Enable EPEL
@@ -8,6 +8,6 @@ RUN yum -y upgrade
 RUN yum -y install unzip nc
 
 # Get Consul
-ADD https://dl.bintray.com/mitchellh/consul/0.3.0_linux_amd64.zip /tmp/consul.zip
+ADD https://dl.bintray.com/mitchellh/consul/0.4.0_linux_amd64.zip /tmp/consul.zip
 RUN unzip /tmp/consul.zip consul -d /bin/
 RUN chmod +x /bin/consul
