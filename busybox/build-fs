@@ -1,0 +1,12 @@
+#!/bin/sh
+
+docker build -t fs-builder ./fs-builder || {
+      echo "Something went wrong when building the builder./fs-builder Aborting."
+      exit 1
+}
+[ -f ./rootfs.tar ] && mv ./rootfs.tar ./rootfs_$(date +%F-%T).tar
+
+docker run fs-builder cat /rootfs.tar > ./rootfs.tar  
+
+echo "You can now build the busybox image, with:"
+echo "docker build -t busybox ."
