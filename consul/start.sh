@@ -5,7 +5,7 @@ die()  { echo; echo "ERROR:   $@" 1>&2; "Exiting.";  exit 1; }
 
 for js in /config/*.jenv; do
   jenv "$js" cnsl_ | tee  "${js%%\.jenv}";
-done                                  &&
+done                                   &&
 /bin/consul agent -config-dir=/config  & consul_pid=$!
 
 #Wait for consul to come up.
@@ -19,7 +19,7 @@ done;
 
 echo "Starting the service.."
 if [ -f /bin/service ]; then
-  sh /bin/service;
+  sh -c /bin/service;
   service_status=$?
 else 
   die "No Service Found."

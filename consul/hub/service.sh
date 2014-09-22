@@ -3,7 +3,8 @@ die() { echo "ERROR:    $@" 1>&2; echo "Exiting.";  exit 1; }
 warn() { echo "WARNING: $@" 1>&2; }
 info() { echo "INFO: $@" 1>&2; }
 
-welcome="Hub provides no services other than a central Consul.";
+ip=$(hostname -i);
+welcome="Hub provides a central consul and UI. See http://$ip:8500/ui";
 instruction="Type EXIT to stop.";
 
 info "$welcome"
