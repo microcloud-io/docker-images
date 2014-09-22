@@ -22,7 +22,7 @@ if [ -f /bin/service ]; then
   sh /bin/service;
   service_status=$?
 else 
-  warn "No Service Found."
+  die "No Service Found."
 fi
 
 # Did the service failed?
