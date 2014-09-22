@@ -11,5 +11,5 @@
   "ports": {
     "dns": 53
   },
-  "ui-dir": "/ui"
+  "ui_dir": "/ui"
 }
