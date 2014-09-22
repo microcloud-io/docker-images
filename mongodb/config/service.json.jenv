@@ -1,0 +1,7 @@
+{
+  "service": {
+    "name": "database",
+    "tags": ["master"],
+    "port": 27017
+  }
+}
