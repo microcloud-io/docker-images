@@ -1,7 +1,7 @@
 #!/bin/sh
-die() { echo "\nERROR:    $@\n" 1>&2; echo "Exiting.";  exit 1; }
-warn() { echo "\nWARNING: $@\n" 1>&2; }
-info() { echo "INFO: $@" 1>&2; }
+die()  { echo; echo "ERROR:    $@" 1>&2; echo; echo "Exiting.";  exit 1; }
+warn() { echo; echo "WARNING: $@"  1>&2; echo; }
+info() {       echo "INFO: $@"     1>&2; }
 
 for js in /config/*.jenv; do
   jenv "$js" cnsl_ | tee  "${js%%\.jenv}";
