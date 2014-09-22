@@ -1,5 +1,7 @@
 #!/bin/sh
-die() { echo "$@" 1>&2; echo "Exiting.";  exit 1; }
+die() { echo "\nERROR:    $@\n" 1>&2; echo "Exiting.";  exit 1; }
+warn() { echo "\nWARNING: $@\n" 1>&2; }
+info() { echo "INFO: $@" 1>&2; }
 
 for js in /config/*.jenv; do
   jenv "$js" cnsl_ | tee  "${js%%\.jenv}";
@@ -17,13 +19,25 @@ done;
 
 echo "Starting the service.."
 if [ -f /bin/service ]; then
-  . /bin/service;
+  sh /bin/service;
+  service_status=$?
 else 
-  echo "WARNNING! No Service Found."
+  warn "No Service Found."
 fi
 
-# if we are here, the service either died or is running as a deamon.
-# Services can be configured to be restarted during health checks
-# as such we keep the container up until consul is up.
-wait "$consul_pid"
+# Did the service failed?
+if [ "$service_status" -ne 0 ]; then
+  warn "Service failed.";
+  # Services can be configured to be restarted during health checks
+  # as such keep the container running until consul is up.
+  wait "$consul_pid"
+else
+  #if we are here, the services has finished ask consul to shut down.
+  info "Services finished."
+  kill -s SIGINT "$consul_pid"
+  info "Shutting down consul."
+  wait "$consul_pid" #wait for consul to shut down.
+fi;
+
+# if we are here, the service has succesfully finished.
 echo "Exiting. Bye."

@@ -4,7 +4,7 @@ RUN yum -y upgrade && yum -y install busybox tar && yum -y clean all
 
 RUN mkdir /rootfs
 WORKDIR /rootfs
-RUN mkdir bin etc lib proc sbin tmp dev dev/pts lib64 sys usr usr/lib64 
+RUN mkdir bin etc lib proc sbin tmp dev dev/pts lib64 sys usr usr/lib64 var
 RUN touch etc/resolv.conf
 RUN cp /etc/nsswitch.conf etc/nsswitch.conf
 RUN echo root:x:0:0:root:/:/bin/sh > etc/passwd && echo root:x:0: > etc/group
