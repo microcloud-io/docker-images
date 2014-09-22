@@ -11,5 +11,11 @@ EXPOSE 8300 8301 8302
 ADD https://github.com/omeid/jenv/raw/master/bin/jenv  /bin/jenv
 RUN chmod +x /bin/jenv
 
+ADD start.sh /bin/start 
+RUN chmod +x /bin/start
+
 ONBUILD ADD config/ /config
 ONBUILD ADD service.sh /bin/service
+
+
+CMD start
