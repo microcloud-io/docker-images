@@ -6,23 +6,28 @@
 For me details, see each images README under their directory.
 
 ## microcloud/busybox
-This images is strongly inspired and borrows some code from the offical busybox.
-Includes libstdc++ and everything that the official busybox provides.
-
-
-## microcloud/start
-This image is based on microcloud/busybox but defines a command on two on build instructions. 
 This images is meant to be used as base.
 
+This images is strongly inspired and borrows some code from the offical busybox.
+Provides everything from official busybox plus libstdc++ and two on build instructions
+and a CMD script. See microcloud/nope for a simple and microcloud/consul for advanced
+usage.
 
-## microcloud/nope-storage
-This image is based on microcloud/start and adds no services but a useful message.
+
+## microcloud/nope
 It is meant to be used as Data Only storage.
 
+This image is based on microcloud/busybox and adds no services but a useful message.
+
 ## microcloud/consul
-This image is based on microcloud/start and is very opinionated and is designed to be used as base.
-Includes i[consul.io](http://www.consul.io/) (for service discovery, health), [Jenv](https://github.com/omeid/jenv/) (for runtime config edit), and a mechanism to start services.
 This images is meant to be used as base.
+
+This image is based on microcloud/busybox and is very opinionated.
+Includes 
+[consul.io](http://www.consul.io/) (service discovery, health), 
+[Jenv](https://github.com/omeid/jenv/) (run time config edit) , 
+and a mechanism to start services. 
+See microcloud/hub and microcloud/mongodb as example.
 
 
 ## microcloud/hub

@@ -1,4 +1,7 @@
 FROM scratch
 MAINTAINER omeid@microcloud.io
 ADD rootfs.tar /
-CMD ["/bin/sh"]
+
+ONBUILD ADD start.sh /bin/start
+ONBUILD RUN chmod +x /bin/start
+CMD start

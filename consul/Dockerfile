@@ -1,4 +1,4 @@
-FROM microcloud/start
+FROM microcloud/busybox
 MAINTAINER omeid@microcloud.io
 
 # Get Consul
